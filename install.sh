@@ -37,7 +37,7 @@ passwd $user
 echo "Please enter password for root user:"
 passwd
 
-pacman --needed --noconfirm -S grub grub-btrfs dosfstools mtools f2fs-tools btrfs-progs xfsprogs xfsdump ntp
+pacman --needed --noconfirm -S grub grub-btrfs dosfstools mtools f2fs-tools btrfs-progs xfsprogs xfsdump ntp networkmanager network-manager-applet xorg-server
 if [ -d /sys/firmware/efi ] ; then
     pacman -S efibootmgr
     grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --removable --recheck
