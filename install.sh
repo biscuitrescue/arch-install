@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ -d /sys/firmware/efi ]; then
-    :
+    ;
 else
     read -p "Please enter device name (/dev/sdX)" device
 fi
@@ -27,6 +27,7 @@ echo "network has been configured"
 
 echo "root ALL=(ALL) ALL" > /etc/sudoers
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
+echo "Defaults, env_reset, pwfeedback" >> /etc/sudoers
 echo "@includedir /etc/sudoers.d" >> /etc/sudoers
 pacman -S sudo --noconfirm
 
