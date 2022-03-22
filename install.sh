@@ -1,10 +1,21 @@
 #!/usr/bin/env bash
 
 if [ -d /sys/firmware/efi ]; then
-    ;
+    :
 else
     read -p "Please enter device name (/dev/sdX)" device
 fi
+
+### INPUT
+
+read -p "Please enter username for new user: " user
+useradd -mG tty,users,video,lp,input,audio,wheel $user
+echo Enter password for $user
+passwd $user
+echo "Please enter password for root user:"
+passwd
+
+### INSTALL
 
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
@@ -31,12 +42,6 @@ echo "Defaults, env_reset, pwfeedback" >> /etc/sudoers
 echo "@includedir /etc/sudoers.d" >> /etc/sudoers
 pacman -S sudo --noconfirm
 
-read -p "Please enter username for new user: " user
-useradd -mG tty,users,video,lp,input,audio,wheel $user
-echo Enter password for $user
-passwd $user
-echo "Please enter password for root user:"
-passwd
 
 pacman --needed --noconfirm -S grub grub-btrfs dosfstools mtools f2fs-tools btrfs-progs xfsprogs xfsdump ntp networkmanager network-manager-applet xorg-server
 if [ -d /sys/firmware/efi ] ; then
