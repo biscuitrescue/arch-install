@@ -3,7 +3,7 @@
 if [ -d /sys/firmware/efi ]; then
     :
 else
-    read -p "Please enter device name (/dev/sdX)" device
+    read -p "Please enter device name (/dev/sdX): " device
 fi
 
 ### INPUT
