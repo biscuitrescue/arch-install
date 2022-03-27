@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 
 dire=`pwd`
-cd git
 
 mkdir -p ~/git
-pacman -Qq > ~/git/check.txt
-if grep -q 'paru-bin' ~/git/check.txt
+cd ~/git
+
+if [[ `pacman -Qq | grep -i paru-bin` ]]; then
 	:
 else
-	git clone https://aur.archlinux.org/paru-bin.git
+	git clone https://aur.archlinux.org/paru-bin
 	cd paru-bin
 	makepkg -sri
 fi
 
+
 cd $dire
-paru --needed --noconfirm --ask 4 -S - < paru.txt 
+paru --needed --ask 4 -S - < paru.txt 
