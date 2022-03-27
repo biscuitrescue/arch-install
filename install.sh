@@ -62,8 +62,7 @@ while true; do
         [yY]*)
             pacman --needed --noconfirm --ask 4 -S - < install.txt
             usermod -aG vboxusers $user
-            chsh -s /usr/bin/fish $user
-            exit 1
+            break
             ;;
         *)
             echo "Invalid, please choose again">&2
