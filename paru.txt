@@ -5,14 +5,12 @@ cava
 downgrade
 etcher-bin
 gconf
-gksu
 librewolf-bin
 mailspring
 paru-bin
 picom-jonaburg-git
 pipes-rs-git
 polybar-git
-protonvpn-cli-ng
 qt-installer-framework
 qtile-extras-git
 riseup-vpn

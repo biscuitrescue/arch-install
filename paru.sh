@@ -13,6 +13,14 @@ else
 	makepkg -sri
 fi
 
-
 cd $dire
-paru --needed --ask 4 -S - < paru.txt 
+
+for i in `cat paru.txt`; do
+	if [[ `pacman -Qq | grep -i $i` ]]; then
+		:
+	else
+		paru -S $i
+	fi
+done
+
+echo "All AUR Packages have been installed"
