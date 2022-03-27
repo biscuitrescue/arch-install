@@ -43,7 +43,7 @@ echo "@includedir /etc/sudoers.d" >> /etc/sudoers
 pacman -S sudo --noconfirm
 
 
-pacman --needed --noconfirm -S grub grub-btrfs dosfstools mtools f2fs-tools btrfs-progs xfsprogs xfsdump ntp networkmanager network-manager-applet xorg-server
+pacman --needed --noconfirm -S grub dosfstools mtools f2fs-tools btrfs-progs xfsprogs xfsdump ntp networkmanager network-manager-applet xorg-server
 if [ -d /sys/firmware/efi ] ; then
     pacman -S efibootmgr
     grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --removable --recheck
@@ -61,8 +61,6 @@ while true; do
             ;;
         [yY]*)
             pacman --needed --noconfirm --ask 4 -S - < install.txt
-            pacman --needed -S tlp
-            systemctl enable tlp
             usermod -aG vboxusers $user
             chsh -s /usr/bin/fish $user
             exit 1
@@ -72,6 +70,8 @@ while true; do
     esac
 done
 
+pacman --needed -S tlp
+systemctl enable tlp
 systemctl enable NetworkManager
 systemctl enable fstrim.timer
 systemctl enable ntpd
