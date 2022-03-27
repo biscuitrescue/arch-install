@@ -13,14 +13,12 @@ pipes-rs-git
 polybar-git
 qt-installer-framework
 qtile-extras-git
-riseup-vpn
 river-git
 rxfetch
 shell-color-scripts
 signal-desktop-beta-bin
 spicetify-cli
 spotify
-teams
 ttf-wps-fonts
 virtualbox-ext-oracle
 waybar-git
