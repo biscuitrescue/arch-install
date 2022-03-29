@@ -52,7 +52,7 @@ else:
 
 ### USERS and PASSES
 
-copyfile("pacman.conf", "/etc/pacman.conf")
+copyfile("configs/pacman.conf", "/etc/pacman.conf")
 
 user_name=input("Enter your username: ")
 cmd="useradd -mG tty,video,audio,lp,input,audio,wheel {}".format(user_name)
@@ -120,7 +120,7 @@ print("Network has been configured")
 print()
 
 print("Configuring sudo ...")
-copyfile("sudoers", "/etc/sudoers")
+copyfile("configs/sudoers", "/etc/sudoers")
 install("sudo")
 print("Done")
 print()
@@ -138,7 +138,7 @@ packages=[
     "ntp",
     "networkmanager",
     "network-manager-applet",
-    "xorg-server"
+    "xorg-server",
 ]
 print()
 install_more(packages)
@@ -161,7 +161,7 @@ print("Grub has been configured")
 print()
 
 if waste_of_time:
-    install_all("install.txt")
+    install_all("txt/install.txt")
     run("usermod -aG vboxusers "+user_name, shell=True)
 
 print()

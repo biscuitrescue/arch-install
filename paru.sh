@@ -15,7 +15,7 @@ fi
 
 cd $dire
 
-for i in `cat paru.txt`; do
+for i in `cat txt/paru.txt`; do
 	if [[ `pacman -Qq | grep -i $i` ]]; then
 		:
 	else
