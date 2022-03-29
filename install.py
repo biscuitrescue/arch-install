@@ -14,9 +14,21 @@ def install_all(files):
 def install_more(pkgs):
     with open("packages.txt", "w") as f:
         for i in pkgs:
-            f.write(i)
+            f.write(i+'\n')
     install_all("packages.txt")
 
+
+while True:
+    usb=input("Are you installing on a usb[Y/N]: ")
+    if usb not in "YyNn":
+        print("Invalid response. Please enter again")
+    else:
+        if usb in "nN":
+            is_usb=False
+            break
+        elif yes_no in "yY":
+            is_usb=True
+            break
 
 while True:
     yes_no=input("Do you want to install all packages[Y/N]: ")
@@ -132,11 +144,15 @@ install_more(packages)
 print()
 
 print("Installing Grub")
-if UEFI:
-    install("efibootmgr")
+if is_usb:
     run("grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --removabel --recheck", shell=True)
-else:
     run("grub-install --target=i386-pc {}".format(grub_disk), shell=True)
+else:
+    if UEFI:
+        install("efibootmgr")
+        run("grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --removabel --recheck", shell=True)
+    else:
+        run("grub-install --target=i386-pc {}".format(grub_disk), shell=True)
 
 run("grub-mkconfig -o /boot/grub/grub.cfg", shell=True)
 
@@ -147,7 +163,11 @@ if waste_of_time:
     install_all("install.txt")
     run("usermod -aG vboxusers "+user_name)
 
+print()
+
 install("tlp")
+
+print()
 
 enable=[
     "tlp",
@@ -160,5 +180,10 @@ for service in enable:
     cmd="systemctl enable {}".format(service)
     run(cmd, shell=True)
 
+print()
+if is_usb:
+    print("Please configure mkinitcpio")
+print()
 print("Base system has been installed\nPlease run paru.sh as {}".format(user_name))
+print()
 print("Terminating ...")
