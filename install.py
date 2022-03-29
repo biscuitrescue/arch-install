@@ -65,7 +65,7 @@ print()
 with open("/etc/locale.gen") as f:
     locale_gen=f.readlines()
 
-for i in locale_fen:
+for i in locale_gen:
     if i.strip()=="#en_US.UTF-8 UTF-8":
         i="en_US.UTF-8 UTF-8\n"
 
@@ -99,7 +99,7 @@ print()
 
 print("Configuring Networking ...")
 
-with open("/etc/hosts" "a") as f:
+with open("/etc/hosts", "a") as f:
     f.write("127.0.0.1\t\tlocalhost")
     f.write("::1\t\tlocalhost")
     f.write("127.0.1.1\t\t{}".format(host_name))
