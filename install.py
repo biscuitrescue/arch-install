@@ -161,7 +161,7 @@ print()
 
 if waste_of_time:
     install_all("install.txt")
-    run("usermod -aG vboxusers "+user_name)
+    run("usermod -aG vboxusers "+user_name, shell=True)
 
 print()
 
