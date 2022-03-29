@@ -133,6 +133,7 @@ packages=[
     "f2fs-tools",
     "btrfs-progs",
     "xfsprogs",
+    "linux-header",
     "xfsdump",
     "ntp",
     "networkmanager",
