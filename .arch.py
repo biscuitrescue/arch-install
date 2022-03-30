@@ -146,6 +146,8 @@ print()
 
 print("Installing Grub")
 if is_usb:
+    copyfile("configs/mkinitcpio.conf", "/etc/mkinicpio.conf")
+    run(["mkinitcpio", "-p"])
     run("grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --removabel --recheck", shell=True)
     run("grub-install --target=i386-pc {}".format(grub_disk), shell=True)
 else:
@@ -181,9 +183,6 @@ for service in enable:
     cmd="systemctl enable {}".format(service)
     run(cmd, shell=True)
 
-print()
-if is_usb:
-    print("Please configure mkinitcpio")
 print()
 print("Base system has been installed\nPlease run paru.sh as {}".format(user_name))
 print()
