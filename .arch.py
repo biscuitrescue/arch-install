@@ -18,17 +18,6 @@ def install_more(pkgs):
     install_all("packages.txt")
 
 
-while True:
-    usb=input("Are you installing on a usb[Y/N]: ")
-    if usb not in "YyNn":
-        print("Invalid response. Please enter again")
-    else:
-        if usb in "nN":
-            is_usb=False
-            break
-        elif yes_no in "yY":
-            is_usb=True
-            break
 
 while True:
     yes_no=input("Do you want to install all packages[Y/N]: ")
@@ -40,6 +29,18 @@ while True:
             break
         elif yes_no in "yY":
             waste_of_time=True
+            break
+
+while True:
+    usb=input("Are you installing to an external disk?[Y/N]: ")
+    if usb not in "YyNn":
+        print("Invalid response. Please enter again")
+    else:
+        if usb in "nN":
+            is_usb=False
+            break
+        elif yes_no in "yY":
+            is_usb=True
             break
 
 ### Check for UEFI
