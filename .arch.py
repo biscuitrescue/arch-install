@@ -146,6 +146,7 @@ install_more(packages)
 print()
 
 print("Installing Grub")
+
 if is_usb:
     copyfile("configs/mkinitcpio.conf", "/etc/mkinicpio.conf")
     run(["mkinitcpio", "-p"])
@@ -165,7 +166,7 @@ print()
 
 if waste_of_time:
     install_all("txt/install.txt")
-    run("usermod -aG vboxusers "+user_name, shell=True)
+    run("usermod -aG vboxusers,libvirt,qemu,kvm "+user_name, shell=True)
 
 print()
 

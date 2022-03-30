@@ -121,6 +121,7 @@ python-psutil
 python-pyalsa
 python-pywal
 qbittorrent
+qemu
 qt5-wayland
 qt6-wayland
 qtile
@@ -152,6 +153,7 @@ ttf-font-awesome
 ueberzug
 unzip
 vim
+virt-manager
 virtualbox
 virtualbox-ext-vnc
 virtualbox-guest-iso
