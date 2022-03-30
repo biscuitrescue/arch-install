@@ -149,7 +149,6 @@ texinfo
 tk
 tlp
 tor
-ttf-font-awesome
 ueberzug
 unzip
 vim

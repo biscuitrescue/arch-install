@@ -190,6 +190,6 @@ for service in enable:
     run(cmd, shell=True)
 
 print()
-print("Base system has been installed\nPlease run paru.sh as {}".format(user_name))
+print("Base system has been installed\nPlease run paru.sh as {} after rebooting".format(user_name))
 print()
 print("Terminating ...")
