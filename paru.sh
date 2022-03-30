@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+sudo pacman -S --needed --noconfirm fish
 chsh -s /bin/fish
 
 dire=`pwd`
