@@ -47,9 +47,13 @@ while True:
 
 if exists("/sys/firmware/efi"):
     UEFI=True
+    if is_usb==True:
+        grub_disk=input("Enter your grub device: ")
+
 else:
     grub_disk=input("Enter your grub device: ")
     UEFI=False
+
 
 ### USERS and PASSES
 
@@ -134,7 +138,7 @@ packages=[
     "f2fs-tools",
     "btrfs-progs",
     "xfsprogs",
-    "linux-header",
+    "linux-headers",
     "xfsdump",
     "ntp",
     "networkmanager",
@@ -149,7 +153,7 @@ print("Installing Grub")
 
 if is_usb:
     copyfile("configs/mkinitcpio.conf", "/etc/mkinicpio.conf")
-    run(["mkinitcpio", "-p"])
+    run(["mkinitcpio", "-P"])
     run("grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --removabel --recheck", shell=True)
     run("grub-install --target=i386-pc {}".format(grub_disk), shell=True)
 else:
