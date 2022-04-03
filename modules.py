@@ -14,3 +14,24 @@ def install_more(pkgs):
         for i in pkgs:
             f.write(i+'\n')
     install_all("packages.txt")
+
+def check_installed(pkg):
+    paru=run(
+        "pacman -Qqe",
+        shell=True,
+        capture_output=True,
+        text=True,
+    )
+
+    pkgs=paru.stdout.split()
+
+    if pkg in pkgs:
+        installed=True
+    else:
+        installed=False
+
+    return installed
+
+def paru(pkg):
+    cmd="paru -S {}".format(pkg)
+    run(cmd, shell=True)

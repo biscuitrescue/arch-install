@@ -25,7 +25,7 @@ while True:
         if usb in "nN":
             is_usb=False
             break
-        elif yes_no in "yY":
+        elif usb in "yY":
             is_usb=True
             break
 
