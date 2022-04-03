@@ -3,21 +3,7 @@
 from os.path import exists
 from subprocess import run
 from shutil import copyfile
-
-def install(pkg):
-    cmd="pacman --needed --noconfirm -S "+pkg
-    run(cmd, shell=True)
-
-def install_all(files):
-    run("pacman --needed --noconfirm --ask 4 -S - < {}".format(files), shell=True)
-
-def install_more(pkgs):
-    with open("packages.txt", "w") as f:
-        for i in pkgs:
-            f.write(i+'\n')
-    install_all("packages.txt")
-
-
+from modules import install, install_all, install_more
 
 while True:
     yes_no=input("Do you want to install all packages[Y/N]: ")

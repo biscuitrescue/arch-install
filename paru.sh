@@ -5,6 +5,12 @@ chsh -s /bin/fish
 
 dire=`pwd`
 
+cp configs/xinitrc ~/.xinitrc
+cp configs/Xresources ~/.Xresources
+cp configs/xprofile ~/.xprofile
+
+xrdb merge ~/.Xresources
+
 mkdir -p ~/git
 cd ~/git
 
@@ -92,6 +98,9 @@ cp -r kitty ~/.config/ && rm -rf kitty
 git clone https://github.com/biscuitrescue/picom
 cp -r picom ~/.config && rm -rf picom
 
+git clone https://github.com/biscuitrescue/dunst
+cp -r dunst ~/.config && rm -rf dunst
+
 cd ~/
 touch .fehbg
 echo "#!/bin/sh" >> .fehbg
@@ -120,7 +129,6 @@ cp -r sf-mono-nerd-font/* ~/.local/share/fonts
 cp -r operator-mono-nerd-font/* ~/.local/share/fonts
 
 paru -S --needed nerd-fonts-cascadia-code nerd-fonts-droid-sans-mono nerd-fonts-fantasque-sans-mono nerd-fonts-hasklig nerd-fonts-jetbrains-mono nerd-fonts-mononoki nerd-fonts-source-code-pro nerd-fonts-terminus ttf-iosevka-nerd
-
 
 echo "Done"
 echo 
